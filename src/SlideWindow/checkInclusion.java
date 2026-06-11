@@ -39,4 +39,59 @@ public class checkInclusion {
 
         return false;
     }
+
+
+    /**
+     * 定义一个变量less,表示s1与窗口内不同字母数量的差异,还没进入窗口时,less表示s1中不同字母的数量
+     * 数组arr索引对应字母,索引对应的值表示对应字母出现的数量
+     * 如果arr[idx] == 0, 表示arr的idx对应的字母的数量与窗口内的一致,此时less--
+     * 如果窗口还未成型,则跳过此轮
+     * 离开窗口的字母对应的索引out, 如果arr[out] == 0, 则此时不会满足条件,arr[out]++; less++
+     */
+    public boolean checkInclusion2(String s1, String s2){
+
+        int len = s1.length();
+        if (s2 == null || s2.isEmpty() || s2.length() < len){
+            return false;
+        }
+
+        //定义一个变量less,表示字符串s1中不同字母的数量
+        int less = 0;
+        int[] arr = new int[26];
+        for (int i = 0; i < len; i++){
+            int idx = s1.charAt(i) - 'a';
+
+            if (arr[idx] == 0){
+                less++;
+            }
+
+            arr[idx]++;
+        }
+
+        char[] s = s2.toCharArray();
+        for (int right = 0; right < s.length; right++){
+            int idx = s[right] - 'a';
+            arr[idx]--;
+            if (arr[idx] == 0){
+                less--;
+            }
+
+            if (less == 0){
+                return true;
+            }
+
+            int left = right - len + 1;
+            if (left < 0){
+                continue;
+            }
+
+            int out = s[left] - 'a';
+            if (arr[out] == 0){
+                less++;
+            }
+            arr[out]++;
+        }
+
+        return false;
+    }
 }
