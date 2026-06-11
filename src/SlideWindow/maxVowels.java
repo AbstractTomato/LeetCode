@@ -41,4 +41,38 @@ public class maxVowels {
 
         return ans;
     }
+
+    public int maxVowels2(String s, int k){
+        int ans = 0;
+        int curCount = 0;
+
+        char[] charArray = s.toCharArray();
+
+        for (int right = 0; right < charArray.length; right++) {
+            //判断窗口右端是否满足条件
+            if (charArray[right] == 'a' || charArray[right] == 'e' || charArray[right] == 'i' || charArray[right] == 'o' || charArray[right] == 'u'){
+                curCount++;
+            }
+
+            //如果窗口还没形成,则跳过
+            int left = right - k + 1;
+            if (left < 0){
+                continue;
+            }
+
+            //更新答案
+            ans = Math.max(ans, curCount);
+            if (ans == k){
+                break;
+            }
+
+            //判断左指针
+            char out = charArray[left];
+            if (out =='a' || out =='e' || out =='i' || out =='o' || out =='u'){
+                curCount--;
+            }
+        }
+
+        return ans;
+    }
 }
