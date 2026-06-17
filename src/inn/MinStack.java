@@ -65,27 +65,21 @@ public class MinStack {
     }
 
     public void push(int value){
-        if(deque.isEmpty()){
-            //第一个元素
+        if (deque.isEmpty()){
             deque.push(0L);
             min = value;
         }else {
-            //如果不是第一个元素
             long diff = value - min;
             deque.push(diff);
-
             if (diff < 0){
-                //表明此时要插入的元素更小,更新min
                 min = value;
             }
         }
     }
 
     public void pop(){
-        Long diff = deque.pop();
-
+        long diff = deque.pop();
         if (diff < 0){
-            //如果弹出的是最小值,则恢复最小值
             min = min - diff;
         }
     }
@@ -100,6 +94,6 @@ public class MinStack {
     }
 
     public int getMin(){
-        return (int)min;
+        return (int) min;
     }
 }
