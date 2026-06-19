@@ -8,10 +8,10 @@ public class hasCycle {
      * 评测系统内部使用整数 pos 来表示链表尾连接到链表中的位置（索引从 0 开始）。注意：pos 不作为参数进行传递 。仅仅是为了标识链表的实际情况。
      * 如果链表中存在环 ，则返回 true 。 否则，返回 false 。
      */
-    public boolean hasCycle1(ListNode head){
+    public boolean hasCycle1(ListNode1 head){
         //快慢指针
-        ListNode fast = head;
-        ListNode slow = head;
+        ListNode1 fast = head;
+        ListNode1 slow = head;
 
         while (fast != null && fast.next != null){
             slow = slow.next;
@@ -31,9 +31,9 @@ public class hasCycle {
      * 如果 pos 是 -1，则在该链表中没有环。注意：pos 不作为参数进行传递，仅仅是为了标识链表的实际情况。
      * 不允许修改 链表。
      */
-    public ListNode hasCycle2(ListNode head){
-        ListNode fast = head;
-        ListNode slow = head;
+    public ListNode1 hasCycle2(ListNode1 head){
+        ListNode1 fast = head;
+        ListNode1 slow = head;
         while (fast != null && fast.next != null){
             fast = fast.next.next;
             slow = slow.next;
@@ -51,10 +51,10 @@ public class hasCycle {
 
 }
 
-class ListNode {
+class ListNode1 {
     int val;
-    ListNode next;
-    ListNode(int x) {
+    ListNode1 next;
+    ListNode1(int x) {
         val = x;
         next = null;
     }
