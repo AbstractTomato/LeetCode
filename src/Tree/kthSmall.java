@@ -9,7 +9,6 @@ import java.util.List;
  * 请你设计一个算法查找其中第 k 小的元素（k 从 1 开始计数）。
  */
 public class kthSmall {
-    private List<Integer> list = new ArrayList<>();
     private int k;
     private int ans = 0;
 
@@ -28,7 +27,6 @@ public class kthSmall {
         if (k == 0){
             ans = root.val;
         }
-        list.add(root.val);
         inorder(root.right);
     }
 }
