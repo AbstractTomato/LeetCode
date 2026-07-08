@@ -10,17 +10,24 @@ import java.util.List;
  */
 public class kthSmall {
     private List<Integer> list = new ArrayList<>();
+    private int k;
+    private int ans = 0;
 
     public int kthSmallest(TreeNode root, int k){
+        this.k = k;
         inorder(root);
-        return list.get(k - 1);
+        return ans;
     }
 
     private void inorder(TreeNode root){
-        if (root == null){
+        if (root == null || k <= 0){
             return;
         }
         inorder(root.left);
+        k--;
+        if (k == 0){
+            ans = root.val;
+        }
         list.add(root.val);
         inorder(root.right);
     }
