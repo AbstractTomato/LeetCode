@@ -6,7 +6,7 @@ package subArray;
  * 子数组是数组中的一个连续部分。
  */
 public class maxSumSubArray {
-    public int maxSubArray(int[] nums){
+    public int maxSubArray1(int[] nums){
         if (nums == null || nums.length == 0){
             return 0;
         }
@@ -26,6 +26,27 @@ public class maxSumSubArray {
         for (int i = 1; i < dp.length; i++) {
             ans = Math.max(dp[i], ans);
         }
+        return ans;
+    }
+
+
+    public int maxSubArray2(int[] nums){
+        if (nums == null || nums.length == 0){
+            return 0;
+        }
+
+        int maxSum = 0;
+        int ans = Integer.MIN_VALUE;
+        for (int num : nums) {
+            if (maxSum <= 0){
+                maxSum = num;
+            }else {
+                maxSum += num;
+            }
+
+            ans = Math.max(ans, maxSum);
+        }
+
         return ans;
     }
 }
