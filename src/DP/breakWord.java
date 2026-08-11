@@ -13,7 +13,7 @@ import java.util.Set;
 public class breakWord {
     public boolean wordBreak(String s, List<String> wordDict){
         Set<String> set = new HashSet<>(wordDict);
-        int n = set.size();
+        int n = s.length();
 
         //dp[i]表示从s.substring(0, i)可以被wordDict组成
         boolean[] dp = new boolean[n + 1];
