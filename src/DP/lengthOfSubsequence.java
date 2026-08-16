@@ -27,4 +27,36 @@ public class lengthOfSubsequence {
 
         return ans;
     }
+
+    public int lengthOfLIS2(int[] nums){
+        if (nums == null || nums.length == 0){
+            return 0;
+        }
+
+        int[] tails = new int[nums.length];
+        int size = 0;
+
+        for (int num : nums){
+            int left = 0;
+            int right = size;
+
+            //利用二分查找找到第一个大于num的索引left
+            while (left < right){
+                int mid = left + (right - left) / 2;
+                if (num > tails[mid]){
+                    left = mid + 1;
+                }else {
+                    right = mid;
+                }
+            }
+
+            tails[left] = num;
+            if (left == size){
+                //开辟新堆
+                size++;
+            }
+        }
+
+        return size;
+    }
 }
